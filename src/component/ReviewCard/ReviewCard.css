@@ -1,0 +1,42 @@
+.review-card-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: var(--light-color) solid 2px;
+    border-radius: 5px;
+    width: 30%;
+    height: 23vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+.review-card-banner {
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    width: 100%;
+    align-items: center;
+    background: rgb(0, 0, 0, 0.6);
+}
+
+.review-card-title {
+    margin: 0;
+}
+
+.review-card-movie-title {
+    margin: 0;
+    color: var(--grey)
+}
+
+.review-card-button {
+    height: 30px;
+    width: 15%;
+    padding: 0;
+    background-color: var(--main-color);
+    border-radius: 5px;
+    color: var(--light-color)
+}
+
+.review-card-image {
+    object-fit: cover;
+}

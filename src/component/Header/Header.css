@@ -1,0 +1,6 @@
+.header {
+    font-size: calc(2vh + 2vw + 1vmin);
+    font-weight: bolder;
+    color: var(--main-color);
+    text-align: center;
+}
