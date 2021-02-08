@@ -1,9 +1,4 @@
-.review-title {
-    color: var(--light-color);
-    margin: 4vh 2vh;
-}
-
-.review-container {
+.user-favorites-container {
     color: var(--light-color);
     display: flex;
     justify-content: space-around;

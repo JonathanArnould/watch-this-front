@@ -1,0 +1,14 @@
+.movie-card {
+    width: 150px;
+    height: 200px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    margin: 2vh;
+}
+
+.movie-poster {
+    width: 100%;
+    object-fit: fill;
+    object-position: center;
+}

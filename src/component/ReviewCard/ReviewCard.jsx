@@ -17,6 +17,7 @@ const ReviewCard = ({ review }) => {
         <div className="review-card-banner-title">
           <h2 className="review-card-title">{review_title}</h2>
           <h3 className="review-card-movie-title">{movie_name}</h3>
+          <p></p>
         </div>
         <Button
           className="review-card-button"

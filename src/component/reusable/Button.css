@@ -1,0 +1,8 @@
+.reusable-button {
+    width: 30%;
+    height: 5vh;
+    margin: 2vh 0;
+    background-color: var(--main-color);
+    border-radius: 26px;
+    font-size: calc(0.6vh + 0.6vw + 0.6vmin)
+}

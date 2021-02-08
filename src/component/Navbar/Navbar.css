@@ -1,0 +1,38 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: calc(1vh + 1vw + 1vmin);
+    font-weight: bolder;
+    color: var(--main-color);
+    text-align: center;
+    margin: 0;
+}
+
+.navbar-title {
+    margin-left: 1vw;
+}
+
+.navbar-title-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.navbar-link-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 40%;
+}
+
+.navbar-link {
+    margin-right: 3vw;
+    font-size: calc(0.7vh + 0.7vw + 0.7vmin);
+    text-decoration: none;
+    color: var(--main-color)
+}
+
+.btn-logout {
+    font-size: 20px !important;
+    width: 150px !important;
+}

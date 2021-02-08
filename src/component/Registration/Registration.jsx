@@ -1,43 +1,38 @@
-import React, { useState } from "react";
+import React from "react";
 import axios from "axios";
-import { Redirect, useHistory } from "react-router";
-import { connect } from "react-redux";
+import { useHistory } from "react-router";
 import { useForm } from "react-hook-form";
-import {
-  userDataAction,
-  userConnectedAction,
-} from "../../redux/actions/usersLogAction";
-import Button from "../reusable/Button";
-import "./Login.css";
+import "./Registration.css";
 
-const Login = ({ user, handleIsConnected, handleUserData }) => {
+const Registration = () => {
   const { register, handleSubmit, formState, errors, watch } = useForm({
     mode: "onTouched",
   });
 
   const { isSubmitted } = formState;
 
-  const onSubmit = async () => {
-    await axios
-      .post(`${process.env.REACT_APP_BASE_URL}/api/users/login`, watch())
-      .then((response) => response.data)
-      .then((data) => {
-        axios({
-          method: "post",
-          url: `${process.env.REACT_APP_BASE_URL}/api/users/profil`,
-          headers: {
-            Authorization: `Bearer ${data.token}`,
-          },
-        })
-          .then((response) => response.data)
-          .then((data) => {
-            handleIsConnected(true);
-            handleUserData({ dataUser: data.results[0] });
-          });
-      });
+  const history = useHistory();
+
+  const onSubmit = () => {
+    axios.post(`${process.env.REACT_APP_BASE_URL}/api/users`, watch());
+    history.push("/login");
   };
 
   const validation = {
+    user_avatar: {
+      required: "vous devez entrer l'url de votre avatar",
+      pattern: {
+        value: 2,
+        message: "Votre url n'est pas au bon format",
+      },
+    },
+    user_name: {
+      required: "vous devez entrer votre nom",
+      pattern: {
+        value: 2,
+        message: "Votre nom n'est pas au bon format",
+      },
+    },
     user_email: {
       required: "vous devez entrer un email",
       pattern: {
@@ -66,18 +61,45 @@ const Login = ({ user, handleIsConnected, handleUserData }) => {
     return SetFormValidationMessage;
   };
 
-  const history = useHistory();
-
-  const handleRedirectToRegistration = () => {
-    history.push("/registration");
-  };
-
   return (
     <div>
-      {user.data.dataUser && <Redirect to="/profil" />}
-      <form className="form-login" onSubmit={handleSubmit(onSubmit)}>
+      <form className="form-register-login" onSubmit={handleSubmit(onSubmit)}>
         <div className="form-container">
           {SetFormValidationMessage()}
+          <div className="label-input-container">
+            <label className="label" htmlFor="name">
+              Votre Nom:{" "}
+            </label>
+            <input
+              type="text"
+              name="user_name"
+              id="user_name"
+              placeholder="Entrez votre nom"
+              className={errors.user_email ? "input-error" : "form-input"}
+              ref={register(validation.user_name)}
+            />
+            {errors.user_name && (
+              <span className="feedback-error">{errors.user_name.message}</span>
+            )}
+          </div>
+          <div className="label-input-container">
+            <label className="label" htmlFor="avatar">
+              Avatar:{" "}
+            </label>
+            <input
+              type="text"
+              name="user_avatar"
+              id="user_avatar"
+              placeholder="URL de votre avatar"
+              className={errors.user_avatar ? "input-error" : "form-input"}
+              ref={register(validation.user_avatar)}
+            />
+            {errors.user_avatar && (
+              <span className="feedback-error">
+                {errors.user_avatar.message}
+              </span>
+            )}
+          </div>
           <div className="label-input-container">
             <label className="label" htmlFor="email">
               Email:{" "}
@@ -119,24 +141,8 @@ const Login = ({ user, handleIsConnected, handleUserData }) => {
           </button>
         </div>
       </form>
-      <div className="to-register">
-        <p className="to-register-text">Pas encore de compte?</p>
-        <Button
-          text="S'inscrire"
-          onClick={() => handleRedirectToRegistration()}
-        />
-      </div>
     </div>
   );
 };
 
-const mapStateToProps = (state) => ({
-  user: state.user,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  handleIsConnected: (newValue) => dispatch(userConnectedAction(newValue)),
-  handleUserData: (newValue) => dispatch(userDataAction(newValue)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default Registration;

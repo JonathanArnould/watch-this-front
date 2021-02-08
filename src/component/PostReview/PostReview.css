@@ -1,0 +1,4 @@
+.test {
+    color: var(--light-color);
+    white-space: pre-line;
+}

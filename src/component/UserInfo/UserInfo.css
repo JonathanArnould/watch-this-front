@@ -1,0 +1,15 @@
+.user-info-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    color: var(--light-color);
+    margin: 4vh 0;
+}
+
+.user-info-avatar {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    margin: 0 2vw;
+}

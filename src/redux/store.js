@@ -1,6 +1,8 @@
 import { createStore, combineReducers } from "redux";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import FavoritesReducer from "./reducers/favorites";
+import MoviesReducer from "./reducers/movies";
 import ReviewsReducer from "./reducers/reviews";
 import usersLog from "./reducers/usersLog";
 
@@ -9,6 +11,8 @@ const persistConfig = { key: "root", storage };
 const rootReducer = combineReducers({
   reviews: ReviewsReducer,
   user: usersLog,
+  movies: MoviesReducer,
+  favorites: FavoritesReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

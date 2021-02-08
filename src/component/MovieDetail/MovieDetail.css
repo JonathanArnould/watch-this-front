@@ -1,0 +1,18 @@
+.movie-detail-container {
+    color: var(--light-color);
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    margin-top: 10vh;
+}
+
+.movie-detail-poster {
+    width: 15%;
+}
+
+.movie-detail-infos-container {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
